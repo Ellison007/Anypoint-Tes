@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mulesoft.connectivity.tes</groupId>
+    <artifactId>tes-parent</artifactId>
+    <version>1.0.3-SNAPSHOT</version>
+    <name>tes-connector</name>
+    <packaging>pom</packaging>
+
+    <parent>
+        <!--  Parent pom documentation https://github.com/mulesoft/interpreted-connectivity-connector-parent-pom/tree/master/interpreted-connectivity-parent -->
+        <groupId>com.mulesoft.connectivity</groupId>
+        <artifactId>interpreted-connectivity-parent</artifactId>
+        <version>1.4.6</version>
+    </parent>
+
+    <properties>
+        <!--TODO (nicomz) this should be the same that tooling uses to create a connector -->
+        <connector.name>tes</connector.name>
+        <!-- This property can disable the validateConnectorModel from connectivity-flow-maven-plugin -->
+        <skipFlowModelValidation>false</skipFlowModelValidation>
+        <enableBinaryCompilation>false</enableBinaryCompilation>
+    </properties>
+
+    <modules>
+            <module>tes-connectivity-model</module>
+            <module>tes-flow-connector-model</module>
+            <module>tes-anypoint-connector-model</module>
+    </modules>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.mulesoft.connectors.maven</groupId>
+                <artifactId>connector-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.mule.weave</groupId>
+                <artifactId>data-weave-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+    <dependencies>
+        <!-- Enable resolution of LW dependency in DW Extension -->
+        <dependency>
+            <groupId>com.mulesoft.connectivity</groupId>
+            <artifactId>connectivity-language</artifactId>
+            <classifier>dw-library</classifier>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.weave</groupId>
+            <artifactId>runtime</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.weave</groupId>
+            <artifactId>core-modules</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <!-- Test -->
+        <dependency>
+            <groupId>org.mule.weave</groupId>
+            <artifactId>data-weave-testing-framework</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.weave</groupId>
+            <artifactId>http-netty-module</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mule.weave</groupId>
+            <artifactId>java-module</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <!-- <repositories>
+        <repository>
+            <id>mule-public</id>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public</url>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>mule-public</id>
+            <url>https://repository.mulesoft.org/nexus/content/repositories/public</url>
+        </pluginRepository>
+    </pluginRepositories> -->
+</project>

@@ -1,0 +1,15 @@
+product: interpreted-connectivity
+component: tes
+version: "0.1"
+profile: interpretedConnectivity
+componentType: library
+
+builder:
+  name: java-maven-lib
+  version: 11
+
+notifications:
+  slackChannel: ms-interpreted-connectivity-bot
+
+productAddOns:
+  - ic-fips-enabled

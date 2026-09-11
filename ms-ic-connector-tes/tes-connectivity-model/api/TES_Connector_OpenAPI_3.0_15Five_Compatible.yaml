@@ -1,0 +1,1179 @@
+openapi: 3.0.3
+info:
+  title: TES Connector API
+  description: OpenAPI specification for the CollegeSource TES Basic Web Service, structured for MuleSoft connector and DataWeave
+    code generation.
+  version: 1.0.0
+servers:
+- url: https://bws.collegesource.com
+  description: Production server
+security:
+- TESAccessKey: []
+paths:
+  /CollegeSource_WSAPI_Basic.asmx/GetUsers:
+    post:
+      operationId: getUsers
+      summary: Get users
+      description: Get users.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetUsersRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEquivalencyInstitutionListByAccount:
+    post:
+      operationId: getEquivalencyInstitutionListByAccount
+      summary: Get equivalency institutions list by account
+      description: Get equivalency institutions list by account.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEquivalencyInstitutionListByAccountRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EquivalencyInstitution'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEquivalencyListBySendInstitutionByAccount:
+    post:
+      operationId: getEquivalencyListBySendInstitutionByAccount
+      summary: Get equivalency list by send institution by account
+      description: Get equivalency list by send institution by account.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEquivalencyListBySendInstitutionByAccountRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EquivalencySummary'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEquivalencyDetailByEquivalencyID:
+    post:
+      operationId: getEquivalencyDetailByEquivalencyID
+      summary: Get equivalency detail by equivalency ID
+      description: Get equivalency detail by equivalency ID.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEquivalencyDetailByEquivalencyIDRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquivalencyDetail'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEquivalency:
+    post:
+      operationId: getEquivalency
+      summary: Get existing equivalency
+      description: Get existing equivalency.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEquivalencyRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EquivalencyID'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEquivalencyExportList:
+    post:
+      operationId: getEquivalencyExportList
+      summary: Get equivalency export list
+      description: Get equivalency export list.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEquivalencyExportListRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EquivalencyExport'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEvaluationTask:
+    post:
+      operationId: getEvaluationTask
+      summary: Get existing evaluation task
+      description: Get existing evaluation task.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEvaluationTaskRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EvaluationID'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetEvaluationStatusByEvaluationID:
+    post:
+      operationId: getEvaluationStatusByEvaluationID
+      summary: Get evaluation status by evaluation ID
+      description: Get evaluation status by evaluation ID.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetEvaluationStatusByEvaluationIDRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenericResult'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetInstitutionByCEEBCode:
+    post:
+      operationId: getInstitutionByCEEBCode
+      summary: Get institution by CEEB code
+      description: Get institution by CEEB code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetInstitutionByCEEBCodeRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Institution'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetInstitutionByInstitutionNameCityStateAbbr:
+    post:
+      operationId: getInstitutionByInstitutionNameCityStateAbbr
+      summary: Get institution by institution name, city and state abbreviation
+      description: Get institution by institution name, city and state abbreviation.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetInstitutionByInstitutionNameCityStateAbbrRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Institution'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetInstitutionByOPEIDCode:
+    post:
+      operationId: getInstitutionByOPEIDCode
+      summary: Get institution by OPEID code
+      description: Get institution by OPEID code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetInstitutionByOPEIDCodeRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Institution'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetReceiveCourseByCourseCode:
+    post:
+      operationId: getReceiveCourseByCourseCode
+      summary: Get receive course by course code
+      description: Get receive course by course code.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetReceiveCourseByCourseCodeRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Course'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/GetCourseByInstitutionIDCourseCodeMonthYear:
+    post:
+      operationId: getCourseByInstitutionIDCourseCodeMonthYear
+      summary: Get course by institution ID, course code, month and year
+      description: Get course by institution ID, course code, month and year.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GetCourseByInstitutionIDCourseCodeMonthYearRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Course'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/SetEquivalency:
+    post:
+      operationId: setEquivalency
+      summary: Insert an equivalency
+      description: Insert an equivalency.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetEquivalencyRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EquivalencyID'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
+components:
+  securitySchemes:
+    TESAccessKey:
+      type: apiKey
+      in: header
+      name: AccessKeyID
+      description: TES access key. The actual TES service accepts AccessKeyID as a form field; this security definition is
+        provided as connector authentication metadata.
+  responses:
+    UnauthorizedError:
+      description: Unauthorized or invalid TES access key.
+    BadRequestError:
+      description: Invalid request parameters.
+    ServerError:
+      description: TES service error.
+  schemas:
+    User:
+      type: object
+      properties:
+        ContactID:
+          type: string
+        NameFirst:
+          type: string
+        NameLast:
+          type: string
+        JobTitle:
+          type: string
+        Administrator:
+          type: boolean
+        ServiceEvaluation:
+          type: boolean
+        ManageEvaluation:
+          type: boolean
+        CreateEquivalency:
+          type: boolean
+    Institution:
+      type: object
+      properties:
+        InstitutionID:
+          type: string
+        InstitutionName:
+          type: string
+        InstitutionCity:
+          type: string
+        InstitutionStateAbbr:
+          type: string
+        InstitutionCountry:
+          type: string
+    EquivalencyInstitution:
+      type: object
+      properties:
+        SendInstitutionID:
+          type: string
+        SendInstitutionName:
+          type: string
+        ReceiveInstitutionName:
+          type: string
+        InstitutionCity:
+          type: string
+        InstitutionStateAbbr:
+          type: string
+        PageCount:
+          type: integer
+    EquivalencySummary:
+      type: object
+      properties:
+        CourseEquivalencyID:
+          type: string
+        EffectiveDateBegin:
+          type: string
+        EffectiveDateEnd:
+          type: string
+        PublicNote:
+          type: string
+        PrivateNote:
+          type: string
+        HideFlag:
+          type: boolean
+        PageCount:
+          type: integer
+        SendTitle:
+          type: string
+        SendLo:
+          type: integer
+        SendHi:
+          type: integer
+        SendCourseCode1:
+          type: string
+        SendCourseCode2:
+          type: string
+        SendCourseCode3:
+          type: string
+        SendCourseCode4:
+          type: string
+        SendCourseCode5:
+          type: string
+        SendCourseCode6:
+          type: string
+        SendCourseCode7:
+          type: string
+        SendCourseCode8:
+          type: string
+        SendCourseCode9:
+          type: string
+        SendCourseCode10:
+          type: string
+        SendCourseTitle1:
+          type: string
+        SendCourseTitle2:
+          type: string
+        SendCourseTitle3:
+          type: string
+        SendCourseTitle4:
+          type: string
+        SendCourseTitle5:
+          type: string
+        SendCourseTitle6:
+          type: string
+        SendCourseTitle7:
+          type: string
+        SendCourseTitle8:
+          type: string
+        SendCourseTitle9:
+          type: string
+        SendCourseTitle10:
+          type: string
+        ReceiveTitle:
+          type: string
+        ReceiveLo:
+          type: integer
+        ReceiveHi:
+          type: integer
+        ReceiveCourseCode1:
+          type: string
+        ReceiveCourseCode2:
+          type: string
+        ReceiveCourseCode3:
+          type: string
+        ReceiveCourseCode4:
+          type: string
+        ReceiveCourseCode5:
+          type: string
+        ReceiveCourseCode6:
+          type: string
+        ReceiveCourseCode7:
+          type: string
+        ReceiveCourseCode8:
+          type: string
+        ReceiveCourseCode9:
+          type: string
+        ReceiveCourseCode10:
+          type: string
+        ReceiveCourseTitle1:
+          type: string
+        ReceiveCourseTitle2:
+          type: string
+        ReceiveCourseTitle3:
+          type: string
+        ReceiveCourseTitle4:
+          type: string
+        ReceiveCourseTitle5:
+          type: string
+        ReceiveCourseTitle6:
+          type: string
+        ReceiveCourseTitle7:
+          type: string
+        ReceiveCourseTitle8:
+          type: string
+        ReceiveCourseTitle9:
+          type: string
+        ReceiveCourseTitle10:
+          type: string
+    EquivalencyDetail:
+      type: object
+      properties:
+        EffectiveDateBegin:
+          type: string
+        EffectiveDateEnd:
+          type: string
+        CreateUser:
+          type: string
+        CreateDateTime:
+          type: string
+        HideFlag:
+          type: boolean
+        PublicNote:
+          type: string
+        PrivateNote:
+          type: string
+        SendInstitution:
+          type: string
+        SendInstitutionCity:
+          type: string
+        SendInstitutionState:
+          type: string
+        SendCourseCode1:
+          type: string
+        SendCourseCode2:
+          type: string
+        SendCourseCode3:
+          type: string
+        SendCourseCode4:
+          type: string
+        SendCourseCode5:
+          type: string
+        SendCourseCode6:
+          type: string
+        SendCourseCode7:
+          type: string
+        SendCourseCode8:
+          type: string
+        SendCourseCode9:
+          type: string
+        SendCourseCode10:
+          type: string
+        SendCourseTitle1:
+          type: string
+        SendCourseTitle2:
+          type: string
+        SendCourseTitle3:
+          type: string
+        SendCourseTitle4:
+          type: string
+        SendCourseTitle5:
+          type: string
+        SendCourseTitle6:
+          type: string
+        SendCourseTitle7:
+          type: string
+        SendCourseTitle8:
+          type: string
+        SendCourseTitle9:
+          type: string
+        SendCourseTitle10:
+          type: string
+        SendCourseUnits1:
+          type: string
+        SendCourseUnits2:
+          type: string
+        SendCourseUnits3:
+          type: string
+        SendCourseUnits4:
+          type: string
+        SendCourseUnits5:
+          type: string
+        SendCourseUnits6:
+          type: string
+        SendCourseUnits7:
+          type: string
+        SendCourseUnits8:
+          type: string
+        SendCourseUnits9:
+          type: string
+        SendCourseUnits10:
+          type: string
+        ReceiveInstitution:
+          type: string
+        ReceiveInstitutionCity:
+          type: string
+        ReceiveInstitutionState:
+          type: string
+        ReceiveCourseCode1:
+          type: string
+        ReceiveCourseCode2:
+          type: string
+        ReceiveCourseCode3:
+          type: string
+        ReceiveCourseCode4:
+          type: string
+        ReceiveCourseCode5:
+          type: string
+        ReceiveCourseCode6:
+          type: string
+        ReceiveCourseCode7:
+          type: string
+        ReceiveCourseCode8:
+          type: string
+        ReceiveCourseCode9:
+          type: string
+        ReceiveCourseCode10:
+          type: string
+        ReceiveCourseTitle1:
+          type: string
+        ReceiveCourseTitle2:
+          type: string
+        ReceiveCourseTitle3:
+          type: string
+        ReceiveCourseTitle4:
+          type: string
+        ReceiveCourseTitle5:
+          type: string
+        ReceiveCourseTitle6:
+          type: string
+        ReceiveCourseTitle7:
+          type: string
+        ReceiveCourseTitle8:
+          type: string
+        ReceiveCourseTitle9:
+          type: string
+        ReceiveCourseTitle10:
+          type: string
+        ReceiveCourseUnits1:
+          type: string
+        ReceiveCourseUnits2:
+          type: string
+        ReceiveCourseUnits3:
+          type: string
+        ReceiveCourseUnits4:
+          type: string
+        ReceiveCourseUnits5:
+          type: string
+        ReceiveCourseUnits6:
+          type: string
+        ReceiveCourseUnits7:
+          type: string
+        ReceiveCourseUnits8:
+          type: string
+        ReceiveCourseUnits9:
+          type: string
+        ReceiveCourseUnits10:
+          type: string
+    EquivalencyID:
+      type: object
+      properties:
+        EquivalencyID:
+          type: string
+    EvaluationID:
+      type: object
+      properties:
+        EvaluationID:
+          type: string
+    Course:
+      type: object
+      properties:
+        CourseID:
+          type: string
+        CourseCode:
+          type: string
+        CourseTitle:
+          type: string
+    EquivalencyExport:
+      type: object
+      properties:
+        SendInstitution:
+          type: string
+        SendInstitutionCity:
+          type: string
+        SendInstitutionState:
+          type: string
+        SendInstitutionCountry:
+          type: string
+        SendInstitutionOPEID:
+          type: string
+        SendInstitutionIPEDSID:
+          type: string
+        SendInstitutionCEEBCode:
+          type: string
+        SendEditionLowYear:
+          type: integer
+        SendEditionHighYear:
+          type: integer
+        SendCourse1CourseCode:
+          type: string
+        SendCourse2CourseCode:
+          type: string
+        SendCourse3CourseCode:
+          type: string
+        SendCourse4CourseCode:
+          type: string
+        SendCourse5CourseCode:
+          type: string
+        SendCourse6CourseCode:
+          type: string
+        SendCourse7CourseCode:
+          type: string
+        SendCourse8CourseCode:
+          type: string
+        SendCourse9CourseCode:
+          type: string
+        SendCourse10CourseCode:
+          type: string
+        SendCourse1CourseTitle:
+          type: string
+        SendCourse2CourseTitle:
+          type: string
+        SendCourse3CourseTitle:
+          type: string
+        SendCourse4CourseTitle:
+          type: string
+        SendCourse5CourseTitle:
+          type: string
+        SendCourse6CourseTitle:
+          type: string
+        SendCourse7CourseTitle:
+          type: string
+        SendCourse8CourseTitle:
+          type: string
+        SendCourse9CourseTitle:
+          type: string
+        SendCourse10CourseTitle:
+          type: string
+        SendCourse1Units:
+          type: string
+        SendCourse2Units:
+          type: string
+        SendCourse3Units:
+          type: string
+        SendCourse4Units:
+          type: string
+        SendCourse5Units:
+          type: string
+        SendCourse6Units:
+          type: string
+        SendCourse7Units:
+          type: string
+        SendCourse8Units:
+          type: string
+        SendCourse9Units:
+          type: string
+        SendCourse10Units:
+          type: string
+        ReceiveInstitution:
+          type: string
+        ReceiveEditionLowYear:
+          type: integer
+        ReceiveEditionHighYear:
+          type: integer
+        ReceiveCourse1CourseCode:
+          type: string
+        ReceiveCourse2CourseCode:
+          type: string
+        ReceiveCourse3CourseCode:
+          type: string
+        ReceiveCourse4CourseCode:
+          type: string
+        ReceiveCourse5CourseCode:
+          type: string
+        ReceiveCourse6CourseCode:
+          type: string
+        ReceiveCourse7CourseCode:
+          type: string
+        ReceiveCourse8CourseCode:
+          type: string
+        ReceiveCourse9CourseCode:
+          type: string
+        ReceiveCourse10CourseCode:
+          type: string
+        ReceiveCourse1CourseTitle:
+          type: string
+        ReceiveCourse2CourseTitle:
+          type: string
+        ReceiveCourse3CourseTitle:
+          type: string
+        ReceiveCourse4CourseTitle:
+          type: string
+        ReceiveCourse5CourseTitle:
+          type: string
+        ReceiveCourse6CourseTitle:
+          type: string
+        ReceiveCourse7CourseTitle:
+          type: string
+        ReceiveCourse8CourseTitle:
+          type: string
+        ReceiveCourse9CourseTitle:
+          type: string
+        ReceiveCourse10CourseTitle:
+          type: string
+        ReceiveCourse1Units:
+          type: string
+        ReceiveCourse2Units:
+          type: string
+        ReceiveCourse3Units:
+          type: string
+        ReceiveCourse4Units:
+          type: string
+        ReceiveCourse5Units:
+          type: string
+        ReceiveCourse6Units:
+          type: string
+        ReceiveCourse7Units:
+          type: string
+        ReceiveCourse8Units:
+          type: string
+        ReceiveCourse9Units:
+          type: string
+        ReceiveCourse10Units:
+          type: string
+        ActiveDateBegin:
+          type: string
+        ActiveDateEnd:
+          type: string
+        ContactName:
+          type: string
+        EQCreateDateTime:
+          type: string
+        EQLEditDateTime:
+          type: string
+        HideFlag:
+          type: boolean
+        CommentsPublic:
+          type: string
+        CommentsPrivate:
+          type: string
+    GenericResult:
+      type: object
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    GetUsersRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+      required:
+      - AccessKeyID
+    GetEquivalencyInstitutionListByAccountRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        Page:
+          type: string
+        PageSize:
+          type: string
+      required:
+      - AccessKeyID
+      - Page
+      - PageSize
+    GetEquivalencyListBySendInstitutionByAccountRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        SendInstitutionID:
+          type: string
+        Page:
+          type: string
+        PageSize:
+          type: string
+        ActiveStatus:
+          type: string
+        CourseCode:
+          type: string
+        SortType:
+          type: string
+        CourseCodeType:
+          type: string
+        HideStatus:
+          type: string
+      required:
+      - AccessKeyID
+      - SendInstitutionID
+      - Page
+      - PageSize
+      - ActiveStatus
+      - SortType
+      - CourseCodeType
+      - HideStatus
+    GetEquivalencyDetailByEquivalencyIDRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        EquivalencyID:
+          type: string
+      required:
+      - AccessKeyID
+      - EquivalencyID
+    GetEquivalencyRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        SendInstitutionID:
+          type: string
+        SendCourseCode1:
+          type: string
+        SendCourseCode2:
+          type: string
+        SendCourseCode3:
+          type: string
+        SendCourseCode4:
+          type: string
+        SendCourseCode5:
+          type: string
+        SendCourseCode6:
+          type: string
+        SendCourseCode7:
+          type: string
+        SendCourseCode8:
+          type: string
+        SendCourseCode9:
+          type: string
+        SendCourseCode10:
+          type: string
+        ReceiveCourseCode1:
+          type: string
+        ReceiveCourseCode2:
+          type: string
+        ReceiveCourseCode3:
+          type: string
+        ReceiveCourseCode4:
+          type: string
+        ReceiveCourseCode5:
+          type: string
+        ReceiveCourseCode6:
+          type: string
+        ReceiveCourseCode7:
+          type: string
+        ReceiveCourseCode8:
+          type: string
+        ReceiveCourseCode9:
+          type: string
+        ReceiveCourseCode10:
+          type: string
+      required:
+      - AccessKeyID
+      - SendInstitutionID
+      - SendCourseCode1
+      - ReceiveCourseCode1
+    GetEquivalencyExportListRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        SendInstitutionID:
+          type: string
+        PastNumDay:
+          type: string
+        DateType:
+          type: string
+        EquivalencyType:
+          type: string
+      required:
+      - AccessKeyID
+      - PastNumDay
+      - DateType
+      - EquivalencyType
+    GetEvaluationTaskRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        SendInstitutionID:
+          type: string
+        SendCourseCode1:
+          type: string
+        SendCourseCode2:
+          type: string
+        SendCourseCode3:
+          type: string
+        SendCourseCode4:
+          type: string
+        SendCourseCode5:
+          type: string
+        SendCourseCode6:
+          type: string
+        SendCourseCode7:
+          type: string
+        SendCourseCode8:
+          type: string
+        SendCourseCode9:
+          type: string
+        SendCourseCode10:
+          type: string
+      required:
+      - AccessKeyID
+      - SendInstitutionID
+      - SendCourseCode1
+    GetEvaluationStatusByEvaluationIDRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        EvaluationID:
+          type: string
+      required:
+      - AccessKeyID
+      - EvaluationID
+    GetInstitutionByCEEBCodeRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        CEEBCode:
+          type: string
+      required:
+      - AccessKeyID
+      - CEEBCode
+    GetInstitutionByInstitutionNameCityStateAbbrRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        InstitutionName:
+          type: string
+        City:
+          type: string
+        StateAbbr:
+          type: string
+      required:
+      - AccessKeyID
+      - InstitutionName
+      - City
+      - StateAbbr
+    GetInstitutionByOPEIDCodeRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        InstitutionOPEID:
+          type: string
+      required:
+      - AccessKeyID
+      - InstitutionOPEID
+    GetReceiveCourseByCourseCodeRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        CourseCode:
+          type: string
+      required:
+      - AccessKeyID
+      - CourseCode
+    GetCourseByInstitutionIDCourseCodeMonthYearRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        InstitutionID:
+          type: string
+        CourseCode:
+          type: string
+        Month:
+          type: string
+        Year:
+          type: string
+      required:
+      - AccessKeyID
+      - InstitutionID
+      - CourseCode
+      - Month
+      - Year
+    SetEquivalencyRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        CreateUserID:
+          type: string
+        EffectiveDateBegin:
+          type: string
+        EffectiveDateEnd:
+          type: string
+        PublicNote:
+          type: string
+        PrivateNote:
+          type: string
+        HideFlag:
+          type: string
+        SendCourseID1:
+          type: string
+        SendCourseID2:
+          type: string
+        SendCourseID3:
+          type: string
+        SendCourseID4:
+          type: string
+        SendCourseID5:
+          type: string
+        SendCourseID6:
+          type: string
+        SendCourseID7:
+          type: string
+        SendCourseID8:
+          type: string
+        SendCourseID9:
+          type: string
+        SendCourseID10:
+          type: string
+        ReceiveCourseID1:
+          type: string
+        ReceiveCourseID2:
+          type: string
+        ReceiveCourseID3:
+          type: string
+        ReceiveCourseID4:
+          type: string
+        ReceiveCourseID5:
+          type: string
+        ReceiveCourseID6:
+          type: string
+        ReceiveCourseID7:
+          type: string
+        ReceiveCourseID8:
+          type: string
+        ReceiveCourseID9:
+          type: string
+        ReceiveCourseID10:
+          type: string
+      required:
+      - AccessKeyID
+      - CreateUserID
+      - HideFlag
+      - SendCourseID1
+      - ReceiveCourseID1

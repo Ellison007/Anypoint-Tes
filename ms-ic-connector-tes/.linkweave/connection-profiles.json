@@ -1,0 +1,15 @@
+[
+  {
+    "name": "Narendar",
+    "description": "",
+    "authType": "apiKey",
+    "connectionFqn": "com::mulesoft::connectivity::tes::connections::Connections::TESAccessKey",
+    "credentials": {
+      "apiKey": "${API_KEY}",
+      "baseUri": "${BASE_URI}"
+    },
+    "id": "narendar",
+    "createdAt": "2026-08-14T06:30:58.103Z",
+    "updatedAt": "2026-08-14T06:30:58.103Z"
+  }
+]

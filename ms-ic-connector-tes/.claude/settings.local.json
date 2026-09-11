@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find \"C:\\\\Maruthi\\\\Connectors\\\\ms-ic-connector-confluence\" -name \"*pagination*test*\" -o -name \"*test*pagination*\" 2>/dev/null | head -5)",
+      "Read(//c/Maruthi/Connectors/ms-ic-connector-confluence/**)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Maruthi\\\\Connectors\\\\EduCloud\\\\ms-ic-connector-tes\" -Recurse -Filter \"*O_GetEquivalency*\")",
+      "Bash(Select-Object FullName)"
+    ]
+  }
+}
