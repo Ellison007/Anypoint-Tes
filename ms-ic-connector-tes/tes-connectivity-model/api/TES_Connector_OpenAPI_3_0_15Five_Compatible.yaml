@@ -366,6 +366,30 @@ paths:
           $ref: '#/components/responses/BadRequestError'
         '500':
           $ref: '#/components/responses/ServerError'
+  /CollegeSource_WSAPI_Basic.asmx/SetEvaluationTask:
+    post:
+      operationId: setEvaluationTask
+      summary: Insert an evaluation task
+      description: Insert an evaluation task.
+      requestBody:
+        required: true
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SetEvaluationTaskRequest'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationID'
+        '401':
+          $ref: '#/components/responses/UnauthorizedError'
+        '400':
+          $ref: '#/components/responses/BadRequestError'
+        '500':
+          $ref: '#/components/responses/ServerError'
 components:
   securitySchemes:
     TESAccessKey:
@@ -1177,3 +1201,42 @@ components:
       - HideFlag
       - SendCourseID1
       - ReceiveCourseID1
+    SetEvaluationTaskRequest:
+      type: object
+      properties:
+        AccessKeyID:
+          type: string
+        CreateUserID:
+          type: string
+        AssignedUserID:
+          type: string
+        Comments:
+          type: string
+        SendInstitutionID:
+          type: string
+        SendCourseID1:
+          type: string
+        SendCourseID2:
+          type: string
+        SendCourseID3:
+          type: string
+        SendCourseID4:
+          type: string
+        SendCourseID5:
+          type: string
+        SendCourseID6:
+          type: string
+        SendCourseID7:
+          type: string
+        SendCourseID8:
+          type: string
+        SendCourseID9:
+          type: string
+        SendCourseID10:
+          type: string
+      required:
+      - AccessKeyID
+      - CreateUserID
+      - AssignedUserID
+      - SendInstitutionID
+      - SendCourseID1
