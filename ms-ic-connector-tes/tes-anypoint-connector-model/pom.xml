@@ -14,7 +14,7 @@
     <groupId>76664cd5-e6d6-4d95-aa20-18b347a8e366</groupId>
     <artifactId>tes-anypoint-connector-model</artifactId>
     <description>tes</description>
-    <name>tes-anypoint-connector-model</name>
+    <name>Tes Connector</name>
 
     <properties>
         <javaModuleName>org.mule.salesforce.connectivity</javaModuleName>
