@@ -6,7 +6,7 @@ import HttpConnection, HttpRequestType, HttpResponse from com::mulesoft::connect
 import serializeBodyParams, serializeCookies, serializeHeaders, withSerializationConfig from com::mulesoft::connectivity::transport::Serialization
 
 type O_GetCourseByInstitutionIDCourseCodeMonthYear_post_Type = {
-  "200": HttpResponse<Array<T_Course>>,
+  "200": HttpResponse<Any>,
   "400": HttpResponse<Any>,
   "401": HttpResponse<Any>,
   "500": HttpResponse<Any>,
@@ -46,7 +46,8 @@ var O_GetCourseByInstitutionIDCourseCodeMonthYear_post = {
       queryParams: query,
       headers: headers,
       config: {
-        contentType: "application/x-www-form-urlencoded"
+        contentType: "application/x-www-form-urlencoded",
+        requestBodyType: "FORM"
       },
       cookie: cookie,
       body: body
@@ -55,39 +56,8 @@ var O_GetCourseByInstitutionIDCourseCodeMonthYear_post = {
     var statusCode = response.status as String
 
     ---
-    if (response.status == 200)
-      do {
-        var responseBody = response.body as Object
-        var rawList =responseBody.ArrayOfCourse.*Course default []
-        var courseList =if (rawList is Array)rawList else[rawList]
-        var result: Array<T_Course> =
-          courseList map ((item) -> {
-            CourseID: item.CourseID as String default "",
-            CourseCode: item.CourseCode as String default "",
-            CourseTitle: item.CourseTitle as String default ""
-          })
-
-        var mappedResponse: O_GetCourseByInstitutionIDCourseCodeMonthYear_post_Type."200" = {
-          contentType: (
-            response.contentType
-              default (
-                response.headers."Content-Type"
-                  default (
-                    response.headers."content-type"
-                      default ""
-                  )
-              )
-          ),
-          status: response.status,
-          statusText: response.statusText default "",
-          headers: response.headers default {},
-          body: result,
-          cookies: response.cookies default {}
-        }
-
-        ---
-        success(mappedResponse)
-      }
+    if (response.status == 200 and response is O_GetCourseByInstitutionIDCourseCodeMonthYear_post_Type."200")
+        success(response)
     else if (response.status == 400 and response is O_GetCourseByInstitutionIDCourseCodeMonthYear_post_Type."400")
       failure(
         response,

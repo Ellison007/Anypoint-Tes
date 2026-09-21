@@ -6,8 +6,6 @@ import Label from com::mulesoft::connectivity::decorator::Annotations
 import O_GetUsers_post, O_GetUsers_post_Type from com::mulesoft::connectivity::tes::operations::O_GetUsers_post
 
 type anypoint_O_GetUsers_post_request = {
-  "GetUsers--body": @Label(value = "body")
-  O_GetUsers_post_Type.request.body
 }
 
 var anypoint_O_GetUsers_post_mapping = [

@@ -6,7 +6,7 @@ import HttpConnection, HttpRequestType, HttpResponse from com::mulesoft::connect
 import serializeBodyParams, serializeCookies, serializeHeaders, withSerializationConfig from com::mulesoft::connectivity::transport::Serialization
  
 type O_GetUsers_post_Type = {
-  "200": HttpResponse<Array<T_User>>,
+  "200": HttpResponse<Any>,
   "400": HttpResponse<Any>,
   "401": HttpResponse<Any>,
   "500": HttpResponse<Any>,
@@ -14,10 +14,10 @@ type O_GetUsers_post_Type = {
   | ResultFailure<O_GetUsers_post_Type."400", Error<"400", "CLIENT_ERROR">> 
   | ResultFailure<O_GetUsers_post_Type."500", Error<"500", "SERVER_ERROR">> 
     | ResultFailure<HttpResponse<Any>, Error<"status-unexpected", String>>,
-  request: HttpRequestType<{| query: Object, headers: Object, cookie: Object, body: T_GetUsersRequest |}>,
+  request: HttpRequestType<{| query: Object, headers: Object, cookie: Object, body?: Object |}>,
   response: O_GetUsers_post_Type."200"
 }
- 
+
 @OperationElement()
 var O_GetUsers_post = {
   name: "GetUsers",
@@ -33,35 +33,16 @@ var O_GetUsers_post = {
         queryParams: query,
         headers: headers,
         config: {
-          contentType: "application/x-www-form-urlencoded"
+          contentType: "application/x-www-form-urlencoded",
+          requestBodyType: "FORM"
         },
         cookie: cookie,
         body: body
       })
       var statusCode = response.status as String
       ---
-      if (response.status == 200)
-        do {
-          var responseBody = response.body as Object
-          var userNodes = ((responseBody.ArrayOfUser as Object).*User default []) as Array
-          var users: Array<T_User> = userNodes map ((node) -> do {
-            var user = node as Object
-            ---
-            {
-              ContactID: user.ContactID as String,
-              NameFirst: user.NameFirst as String,
-              NameLast: user.NameLast as String,
-              JobTitle: user.JobTitle as String,
-              Administrator: user.Administrator as String as Boolean,
-              ServiceEvaluation: user.ServiceEvaluation as String as Boolean,
-              ManageEvaluation: user.ManageEvaluation as String as Boolean,
-              CreateEquivalency: user.CreateEquivalency as String as Boolean
-            }
-          })
-          var mappedResponse = ((response - "body") ++ { body: users }) as O_GetUsers_post_Type."200"
-          ---
-          success(mappedResponse)
-        }
+      if (response.status == 200 and response is O_GetUsers_post_Type."200")
+        success(response)
       else if (response.status == 400 and response is O_GetUsers_post_Type."400")
         failure(response, {
           kind: "400",

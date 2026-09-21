@@ -6,7 +6,7 @@ import HttpConnection, HttpRequestType, HttpResponse from com::mulesoft::connect
 import serializeBodyParams, serializeCookies, serializeHeaders, withSerializationConfig from com::mulesoft::connectivity::transport::Serialization
 
 type O_GetInstitutionByInstitutionNameCityStateAbbr_post_Type = {
-  "200": HttpResponse<Array<T_Institution>>,
+  "200": HttpResponse<Any>,
   "400": HttpResponse<Any>,
   "401": HttpResponse<Any>,
   "500": HttpResponse<Any>,
@@ -34,39 +34,16 @@ var O_GetInstitutionByInstitutionNameCityStateAbbr_post = {
         queryParams: query,
         headers: headers,
         config: {
-          contentType: "application/x-www-form-urlencoded"
+          contentType: "application/x-www-form-urlencoded",
+          requestBodyType: "FORM"
         },
         cookie: cookie,
         body: body
       })
       var statusCode = response.status as String
       ---
-      if (response.status == 200)
-        do {
-          var responseBody = response.body as Object
-          var institutionNodes = ((responseBody.ArrayOfInstitution as Object).*Institution default []) as Array
-          var institutions: Array<T_Institution> = institutionNodes map ((node) -> do {
-            var institution = node as Object
-            ---
-            {
-              InstitutionID: institution.InstitutionID as String default "",
-              InstitutionName: institution.InstitutionName as String default "",
-              InstitutionCity: institution.InstitutionCity as String default "",
-              InstitutionStateAbbr: institution.InstitutionStateAbbr as String default "",
-              InstitutionCountry: institution.InstitutionCountry as String default ""
-            }
-          })
-          var mappedResponse: O_GetInstitutionByInstitutionNameCityStateAbbr_post_Type."200" = {
-            contentType: (response.contentType default (response.headers."Content-Type" default response.headers."content-type" default "")),
-            status: response.status,
-            statusText: (response.statusText default ""),
-            headers: (response.headers default {}),
-            body: institutions,
-            cookies: (response.cookies default {})
-          }
-          ---
-          success(mappedResponse)
-        }
+      if (response.status == 200 and response is O_GetInstitutionByInstitutionNameCityStateAbbr_post_Type."200")
+        success(response)
       else if (response.status == 400 and response is O_GetInstitutionByInstitutionNameCityStateAbbr_post_Type."400")
         failure(response, {
           kind: "400",

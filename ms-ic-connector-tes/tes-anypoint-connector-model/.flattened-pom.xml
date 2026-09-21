@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>76664cd5-e6d6-4d95-aa20-18b347a8e366</groupId>
   <artifactId>tes-anypoint-connector-model</artifactId>
-  <version>1.0.3-SNAPSHOT</version>
+  <version>1.1.8-SNAPSHOT</version>
   <name>tes-anypoint-connector-model</name>
   <description>tes</description>
   <distributionManagement>
@@ -18,7 +18,7 @@
     <dependency>
       <groupId>com.mulesoft.connectivity.tes</groupId>
       <artifactId>tes-connectivity-model</artifactId>
-      <version>1.0.3-SNAPSHOT</version>
+      <version>1.1.8-SNAPSHOT</version>
       <classifier>dw-library</classifier>
       <scope>provided</scope>
     </dependency>
@@ -42,7 +42,7 @@
       <plugin>
         <groupId>org.mule.weave</groupId>
         <artifactId>data-weave-maven-plugin</artifactId>
-        <version>2.10.0</version>
+        <version>2.11.0-20251202</version>
         <extensions>true</extensions>
       </plugin>
     </plugins>

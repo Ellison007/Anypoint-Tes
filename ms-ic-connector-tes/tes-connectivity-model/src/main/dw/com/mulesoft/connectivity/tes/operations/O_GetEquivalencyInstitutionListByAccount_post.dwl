@@ -1,12 +1,12 @@
 %dw 2.7
 import OperationElement from com::mulesoft::connectivity::Metadata
 import Error, Result, ResultFailure,  failure, success from com::mulesoft::connectivity::Model
-import T_EquivalencyInstitution, T_GetEquivalencyInstitutionListByAccountRequest, T_GetEquivalencyInstitutionListByAccountResponse from com::mulesoft::connectivity::tes::types::Types
+import T_GetEquivalencyInstitutionListByAccountRequest from com::mulesoft::connectivity::tes::types::Types
 import HttpConnection, HttpRequestType, HttpResponse from com::mulesoft::connectivity::transport::Http
 import serializeBodyParams, serializeCookies, serializeHeaders, withSerializationConfig from com::mulesoft::connectivity::transport::Serialization
 
 type O_GetEquivalencyInstitutionListByAccount_post_Type = {
-  "200": HttpResponse<T_GetEquivalencyInstitutionListByAccountResponse>,
+  "200": HttpResponse<Any>,
   "400": HttpResponse<Any>,
   "401": HttpResponse<Any>,
   "500": HttpResponse<Any>,
@@ -43,33 +43,16 @@ var O_GetEquivalencyInstitutionListByAccount_post = {
         queryParams: query,
         headers: headers,
         config: {
-          contentType: "application/x-www-form-urlencoded"
+          contentType: "application/x-www-form-urlencoded",
+          requestBodyType: "FORM"
         },
         cookie: cookie,
         body: body
       })
       var statusCode = response.status as String
       ---
-      if (response.status == 200)
-        do {
-          var responseBody = response.body as Object
-          var institutionNodes = ((responseBody.ArrayOfInstitutionPV as Object).*InstitutionPV default []) as Array
-          var institutions: Array<T_EquivalencyInstitution> = institutionNodes map ((node) -> do {
-            var institution = node as Object
-            ---
-            {
-              SendInstitutionID: institution.SendInstitutionID as String,
-              SendInstitutionName: institution.SendInstitutionName as String,
-              ReceiveInstitutionName: institution.ReceiveInstitutionName as String,
-              InstitutionCity: institution.InstitutionCity as String,
-              InstitutionStateAbbr: institution.InstitutionStateAbbr as String default "" ,
-              PageCount: institution.PageCount as String as Number
-            }
-          })
-          var mappedResponse = ((response - "body") ++ { body: { institutions: institutions } }) as O_GetEquivalencyInstitutionListByAccount_post_Type."200"
-           ---
-          success(mappedResponse)
-        }
+      if (response.status == 200and response is O_GetEquivalencyInstitutionListByAccount_post_Type."200")
+         success(response)
       else if (response.status == 400 and response is O_GetEquivalencyInstitutionListByAccount_post_Type."400")
         failure(response, {
           kind: "400",

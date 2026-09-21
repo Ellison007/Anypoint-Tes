@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.mulesoft.connectivity.tes</groupId>
         <artifactId>tes-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.1.8-SNAPSHOT</version>
     </parent>
 
     <!-- NOTE: when publishing to Exchange, use <groupId>ORGANIZATION_ID</groupId> -->
@@ -20,6 +20,7 @@
         <javaModuleName>org.mule.salesforce.connectivity</javaModuleName>
         <!-- The following property is needed to publish to Exchange -->
         <classifier>mule-application</classifier>
+        <organization.id>76664cd5-e6d6-4d95-aa20-18b347a8e366</organization.id>
         <private.exchange.repository.id>Repository</private.exchange.repository.id>
     </properties>
 
@@ -222,8 +223,8 @@
                 <artifactId>maven-shade-plugin</artifactId>
                 <version>3.6.1</version>
                 <configuration>
-                    <minimizeJar>true</minimizeJar>
                     <createDependencyReducedPom>true</createDependencyReducedPom>
+                    <outputFile>${project.build.directory}/${project.artifactId}-${project.version}.jar</outputFile>
                     <shadedArtifactAttached>false</shadedArtifactAttached>
                     <shadedClassifierName>mule-plugin</shadedClassifierName>
                     <artifactSet>
@@ -266,7 +267,7 @@
                     <artifactId>maven-jar-plugin</artifactId>
                     <executions>
                         <execution>
-                            <id>default-mule-plugin-jar</id>
+                            <id>mule-plugin-jar</id>
                             <goals>
                                 <goal>jar</goal>
                             </goals>

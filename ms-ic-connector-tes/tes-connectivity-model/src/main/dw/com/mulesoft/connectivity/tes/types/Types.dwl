@@ -3,6 +3,7 @@
 import Integer from com::mulesoft::connectivity::Types
 
 type T_GetUsersRequest = {
+ 
 }
 
 type T_GetEquivalencyInstitutionListByAccountRequest = {

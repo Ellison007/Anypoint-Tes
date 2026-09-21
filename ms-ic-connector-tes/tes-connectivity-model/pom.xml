@@ -13,7 +13,7 @@
     <parent>
         <groupId>com.mulesoft.connectivity.tes</groupId>
         <artifactId>tes-parent</artifactId>
-        <version>1.0.3-SNAPSHOT</version>
+        <version>1.1.8-SNAPSHOT</version>
     </parent>
 
     <artifactId>tes-connectivity-model</artifactId>

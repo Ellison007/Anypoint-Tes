@@ -6,7 +6,7 @@
 
     <groupId>com.mulesoft.connectivity.tes</groupId>
     <artifactId>tes-parent</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.1.8-SNAPSHOT</version>
     <name>tes-connector</name>
     <packaging>pom</packaging>
 
@@ -14,20 +14,16 @@
         <!--  Parent pom documentation https://github.com/mulesoft/interpreted-connectivity-connector-parent-pom/tree/master/interpreted-connectivity-parent -->
         <groupId>com.mulesoft.connectivity</groupId>
         <artifactId>interpreted-connectivity-parent</artifactId>
-        <version>1.4.6</version>
+        <version>1.5.0</version>
     </parent>
 
     <properties>
         <!--TODO (nicomz) this should be the same that tooling uses to create a connector -->
         <connector.name>tes</connector.name>
-        <!-- This property can disable the validateConnectorModel from connectivity-flow-maven-plugin -->
-        <skipFlowModelValidation>false</skipFlowModelValidation>
-        <enableBinaryCompilation>false</enableBinaryCompilation>
     </properties>
 
     <modules>
             <module>tes-connectivity-model</module>
-            <module>tes-flow-connector-model</module>
             <module>tes-anypoint-connector-model</module>
     </modules>
     <build>
@@ -81,6 +77,15 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <repositories>
+        <repository>
+            <id>mulesoft-releases</id>
+            <name>MuleSoft Public Releases Repository</name>
+            <url>https://repository.mulesoft.org/releases/</url>
+            <layout>default</layout>
+        </repository>
+    </repositories>
     <!-- <repositories>
         <repository>
             <id>mule-public</id>

@@ -6,7 +6,7 @@ import HttpConnection, HttpRequestType, HttpResponse from com::mulesoft::connect
 import serializeBodyParams, serializeCookies, serializeHeaders, withSerializationConfig from com::mulesoft::connectivity::transport::Serialization
 
 type O_GetReceiveCourseByCourseCode_post_Type = {
-  "200": HttpResponse<T_Course>,
+  "200": HttpResponse<Any>,
   "400": HttpResponse<Any>,
   "401": HttpResponse<Any>,
   "500": HttpResponse<Any>,
@@ -34,33 +34,16 @@ var O_GetReceiveCourseByCourseCode_post = {
         queryParams: query,
         headers: headers,
         config: {
-          contentType: "application/x-www-form-urlencoded"
+          contentType: "application/x-www-form-urlencoded",
+          requestBodyType: "FORM"
         },
         cookie: cookie,
         body: body
       })
       var statusCode = response.status as String
       ---
-      if (response.status == 200)
-        do {
-          var responseBody = response.body as Object
-          var courseNode = responseBody.Course as Object default {}
-          var course: T_Course = {
-            CourseID: courseNode.CourseID as String default "",
-            CourseCode: courseNode.CourseCode as String default "",
-            CourseTitle: courseNode.CourseTitle as String default ""
-          }
-          var mappedResponse: O_GetReceiveCourseByCourseCode_post_Type."200" = {
-            contentType: (response.contentType default (response.headers."Content-Type" default response.headers."content-type" default "")),
-            status: response.status,
-            statusText: (response.statusText default ""),
-            headers: (response.headers default {}),
-            body: course,
-            cookies: (response.cookies default {})
-          }
-          ---
-          success(mappedResponse)
-      }
+      if (response.status == 200 and response is O_GetReceiveCourseByCourseCode_post_Type."200")
+        success(response)
       else if (response.status == 400 and response is O_GetReceiveCourseByCourseCode_post_Type."400")
         failure(response, {
           kind: "400",
