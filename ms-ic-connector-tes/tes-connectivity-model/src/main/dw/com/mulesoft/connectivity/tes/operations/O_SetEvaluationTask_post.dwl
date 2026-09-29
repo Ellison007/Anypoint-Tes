@@ -23,7 +23,24 @@ var O_SetEvaluationTask_post = {
       var query = parameter.query default {} withSerializationConfig {}
       var headers = serializeHeaders(parameter.headers default {}, {})
       var cookie = serializeCookies(parameter.cookie default {}, {})
-      var body = serializeBodyParams(parameter.body default {}, {})
+      var requestBody = parameter.body default {}
+      var bodyWithDefaults = {
+        CreateUserID: requestBody.CreateUserID,
+        AssignedUserID: requestBody.AssignedUserID,
+        Comments: requestBody.Comments default "",
+        SendInstitutionID: requestBody.SendInstitutionID,
+        SendCourseID1: requestBody.SendCourseID1,
+        SendCourseID2: requestBody.SendCourseID2 default "",
+        SendCourseID3: requestBody.SendCourseID3 default "",
+        SendCourseID4: requestBody.SendCourseID4 default "",
+        SendCourseID5: requestBody.SendCourseID5 default "",
+        SendCourseID6: requestBody.SendCourseID6 default "",
+        SendCourseID7: requestBody.SendCourseID7 default "",
+        SendCourseID8: requestBody.SendCourseID8 default "",
+        SendCourseID9: requestBody.SendCourseID9 default "",
+        SendCourseID10: requestBody.SendCourseID10 default ""
+      }
+      var body = serializeBodyParams(bodyWithDefaults, {})
       var response = connection({
         method: "POST",
         path: "/CollegeSource_WSAPI_Basic.asmx/SetEvaluationTask",

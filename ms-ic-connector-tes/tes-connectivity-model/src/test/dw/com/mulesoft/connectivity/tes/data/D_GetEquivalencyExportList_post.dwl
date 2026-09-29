@@ -7,7 +7,6 @@ fun V_GetEquivalencyExportList_post_request()
     headers: {},
     cookie: {},
     body: {
-        SendInstitutionID: dw::System::envVars().SEND_INSTITUTION_ID default "",
         PastNumDay: dw::System::envVars().PAST_NUM_DAY default "",
         DateType: "0",
         EquivalencyType: "0"

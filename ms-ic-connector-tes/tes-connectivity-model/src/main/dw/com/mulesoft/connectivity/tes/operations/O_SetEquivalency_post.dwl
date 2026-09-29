@@ -24,7 +24,36 @@ var O_SetEquivalency_post = {
       var query = parameter.query default {} withSerializationConfig {}
       var headers = serializeHeaders(parameter.headers default {}, {})
       var cookie = serializeCookies(parameter.cookie default {}, {})
-      var body = serializeBodyParams(parameter.body default {}, {})
+      var requestBody = parameter.body default {}
+      var bodyWithDefaults = {
+        CreateUserID: requestBody.CreateUserID,
+        EffectiveDateBegin: requestBody.EffectiveDateBegin default "",
+        EffectiveDateEnd: requestBody.EffectiveDateEnd default "",
+        PublicNote: requestBody.PublicNote default "",
+        PrivateNote: requestBody.PrivateNote default "",
+        HideFlag: requestBody.HideFlag,
+        SendCourseID1: requestBody.SendCourseID1,
+        SendCourseID2: requestBody.SendCourseID2 default "",
+        SendCourseID3: requestBody.SendCourseID3 default "",
+        SendCourseID4: requestBody.SendCourseID4 default "",
+        SendCourseID5: requestBody.SendCourseID5 default "",
+        SendCourseID6: requestBody.SendCourseID6 default "",
+        SendCourseID7: requestBody.SendCourseID7 default "",
+        SendCourseID8: requestBody.SendCourseID8 default "",
+        SendCourseID9: requestBody.SendCourseID9 default "",
+        SendCourseID10: requestBody.SendCourseID10 default "",
+        ReceiveCourseID1: requestBody.ReceiveCourseID1,
+        ReceiveCourseID2: requestBody.ReceiveCourseID2 default "",
+        ReceiveCourseID3: requestBody.ReceiveCourseID3 default "",
+        ReceiveCourseID4: requestBody.ReceiveCourseID4 default "",
+        ReceiveCourseID5: requestBody.ReceiveCourseID5 default "",
+        ReceiveCourseID6: requestBody.ReceiveCourseID6 default "",
+        ReceiveCourseID7: requestBody.ReceiveCourseID7 default "",
+        ReceiveCourseID8: requestBody.ReceiveCourseID8 default "",
+        ReceiveCourseID9: requestBody.ReceiveCourseID9 default "",
+        ReceiveCourseID10: requestBody.ReceiveCourseID10 default ""
+      }
+      var body = serializeBodyParams(bodyWithDefaults, {})
       var response = connection({
         method: "POST",
         path: "/CollegeSource_WSAPI_Basic.asmx/SetEquivalency",

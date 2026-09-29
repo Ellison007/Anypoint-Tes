@@ -26,7 +26,15 @@ var O_GetEquivalencyExportList_post = {
       var query = parameter.query default {} withSerializationConfig {}
       var headers = serializeHeaders(parameter.headers default {}, {})
       var cookie = serializeCookies(parameter.cookie default {}, {})
-      var body = serializeBodyParams(parameter.body default {}, {})
+      var requestBody = parameter.body default {}
+      var bodyWithDefaults =
+          if (requestBody.SendInstitutionID?)
+            requestBody
+          else
+            requestBody ++ {
+              SendInstitutionID: ""
+            }
+      var body = serializeBodyParams(bodyWithDefaults, {})
       var response = connection({
         method: "POST",
         path: "/CollegeSource_WSAPI_Basic.asmx/GetEquivalencyExportList",

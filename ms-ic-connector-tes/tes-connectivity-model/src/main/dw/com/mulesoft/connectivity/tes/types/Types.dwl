@@ -51,7 +51,7 @@ type T_GetEquivalencyRequest = {
 }
 
 type T_GetEquivalencyExportListRequest = {
-  SendInstitutionID: String,
+  SendInstitutionID?: String | Null,
   PastNumDay: String,
   DateType: String,
   EquivalencyType: String
@@ -60,15 +60,15 @@ type T_GetEquivalencyExportListRequest = {
 type T_GetEvaluationTaskRequest = {
   SendInstitutionID: String,
   SendCourseCode1: String,
-  SendCourseCode2: String,
-  SendCourseCode3: String,
-  SendCourseCode4: String,
-  SendCourseCode5: String,
-  SendCourseCode6: String,
-  SendCourseCode7: String,
-  SendCourseCode8: String,
-  SendCourseCode9: String,
-  SendCourseCode10: String
+  SendCourseCode2?: String | Null,
+  SendCourseCode3?: String | Null,
+  SendCourseCode4?: String | Null,
+  SendCourseCode5?: String | Null,
+  SendCourseCode6?: String | Null,
+  SendCourseCode7?: String | Null,
+  SendCourseCode8?: String | Null,
+  SendCourseCode9?: String | Null,
+  SendCourseCode10?: String | Null
 }
 
 type T_GetEvaluationStatusByEvaluationIDRequest = {
@@ -403,16 +403,16 @@ type T_Course = {
 type T_SetEvaluationTaskRequest = {
   CreateUserID: String,
   AssignedUserID: String,
-  Comments: String,
+  Comments?: String | Null,
   SendInstitutionID: String,
   SendCourseID1: String,
-  SendCourseID2: String,
-  SendCourseID3: String,
-  SendCourseID4: String,
-  SendCourseID5: String,
-  SendCourseID6: String,
-  SendCourseID7: String,
-  SendCourseID8: String,
-  SendCourseID9: String,
-  SendCourseID10: String
+  SendCourseID2?: String | Null,
+  SendCourseID3?: String | Null,
+  SendCourseID4?: String | Null,
+  SendCourseID5?: String | Null,
+  SendCourseID6?: String | Null,
+  SendCourseID7?: String | Null,
+  SendCourseID8?: String | Null,
+  SendCourseID9?: String | Null,
+  SendCourseID10?: String | Null
 }
